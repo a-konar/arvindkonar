@@ -1,0 +1,24 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+alerting:
+  alertmanagers:
+    - file_sd_configs:
+      - files:
+         - 'targets/alertmanager_targets.json'
+ 
+rule_files:
+  - "rules/*.yml"
+
+scrape_configs:
+
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+        labels:
+          youtube: "arvindkonar"
+
+  - job_name: "node"
+    static_configs:
+      - targets: ["host.docker.internal:9100"]

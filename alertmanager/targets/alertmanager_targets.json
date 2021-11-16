@@ -1,0 +1,10 @@
+[
+  {
+    "labels": {
+      "job": "alertmanager"
+    },
+    "targets": [
+      "host.docker.internal:9093"
+    ]
+  }
+]

@@ -1,0 +1,43 @@
+
+route:
+  receiver: 'default-receiver'
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  group_by: [alertname]
+  routes:
+
+  - match:
+      team: "coffee"
+      severity: "high"
+    receiver: 'coffee'
+
+  - match:
+      team: "tea"
+      severity: "high"
+    receiver: 'tea'
+
+receivers:
+
+- name: 'default-receiver'
+  slack_configs:
+  - channel: '#default-alerts'
+    send_resolved: true
+    api_url: <secret>
+
+- name: 'coffee'
+  slack_configs:
+  - channel: '#coffee-alerts'
+    send_resolved: true
+# Replace api_url_link with slack webhook
+    api_url: 'api_url_link' 
+  pagerduty_configs:
+# Replace service_key with pagerduty integration key
+  - service_key: 'service_key'
+
+- name: 'tea'
+  slack_configs:
+  - channel: '#tea-alerts'
+    send_resolved: true
+    api_url: <secret>
+
