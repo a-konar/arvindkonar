@@ -14,3 +14,4 @@
 <!-- YOUTUBE:START -->
 
 - [How to setup Prometheus, Grafana and Node Exporter on Docker and create a dashboard using that data 💪](https://www.youtube.com/watch?v=RZ7xbUogin0&t=177s)
+- [How to setup Prometheus Alertmanager with Slack and Pagerduty 💪]
