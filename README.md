@@ -1,8 +1,8 @@
 ### Hi there, I'm Arvind Konar 👋
 
-## I'm a Network Engineer, Automation Lover, Content Creator and Teacher!!
+## I'm a Network Engineer, Automation Lover, Content Creator and Educator!!
 
-- 🌱 I’m currently learning everything 🤣
+- 🌱 I’m love learning new technologies
 - 👯 I’m looking to collaborate with other content creators
 
 ### Connect with me:
@@ -14,4 +14,4 @@
 <!-- YOUTUBE:START -->
 
 - [How to setup Prometheus, Grafana and Node Exporter on Docker and create a dashboard using that data 💪](https://www.youtube.com/watch?v=RZ7xbUogin0&t=177s)
-- [How to setup Prometheus Alertmanager with Slack and Pagerduty 💪]
+- [How to setup Prometheus Alertmanager with Slack and Pagerduty 💪](https://www.youtube.com/watch?v=QKkrsY-sndg&t=110s)
