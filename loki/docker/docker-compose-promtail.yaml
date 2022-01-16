@@ -1,0 +1,18 @@
+version: "3"
+
+networks:
+  loki_promtail:
+
+services:
+  promtail:
+    image: grafana/promtail:2.4.1
+    volumes:
+      - /var/log:/var/log
+      - ./config:/etc/loki/config
+    # For docker logs from a linux container, use below part
+      - /var/lib/docker/container:/var/log/docker
+    restart: unless-stopped
+    command: -config.file=/etc/loki/config/promtail-simple-scalable.yaml
+    networks:
+      - loki_promtail
+
