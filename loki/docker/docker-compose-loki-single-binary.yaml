@@ -1,0 +1,67 @@
+version: "3"
+
+networks:
+  loki:
+
+services:
+  loki:
+    image: grafana/loki:2.4.1
+    volumes:
+      - ./config:/etc/loki/config
+    ports:
+      - "3100:3100"
+    restart: unless-stopped
+    command: -config.file=/etc/loki/config/loki-config.yaml
+    networks:
+      - loki
+
+  promtail:
+    image: grafana/promtail:2.4.1
+    volumes:
+      - /var/log:/var/log
+      - /var/lib/docker:/var/lib/docker
+      - ./config:/etc/loki/config
+    restart: unless-stopped
+    command: -config.file=/etc/loki/config/promtail.yaml
+    networks:
+      - loki
+
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    entrypoint:
+      - sh
+      - -euc
+      - |
+        mkdir -p /etc/grafana/provisioning/datasources
+        cat <<EOF > /etc/grafana/provisioning/datasources/ds.yaml
+        apiVersion: 1
+        datasources:
+          - name: Loki
+            type: loki
+            access: proxy
+            url: http://loki:3100
+        EOF
+        /run.sh
+    ports:
+      - "3000:3000"
+    networks:
+      - loki
+
+  nginx-frontend:
+    image: nginx:latest
+    container_name: nginx_frontend
+    ports:
+      - 4000:80
+    environment:
+      - loki=test
+    logging:
+      driver: loki
+      options:
+        loki-url: http://localhost:3100/loki/api/v1/push
+        loki-external-labels: job=docker,env=dev
+    networks:
+      - loki

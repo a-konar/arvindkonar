@@ -13,7 +13,7 @@ services:
       - 7946
       - 9095
     volumes:
-      - ./config/loki-config-simple-scalable-model.yaml:/etc/loki/config.yaml
+      - ./config/loki-config-simple-scalable.yaml:/etc/loki/config.yaml
     depends_on:
       - minio
     networks: &loki-dns
@@ -29,7 +29,7 @@ services:
       - 7946
       - 9095
     volumes:
-      - ./config/loki-config-simple-scalable-model.yaml:/etc/loki/config.yaml
+      - ./config/loki-config-simple-scalable.yaml:/etc/loki/config.yaml
     depends_on:
       - minio
     networks:
@@ -84,17 +84,6 @@ services:
         /run.sh
     ports:
       - "3000:3000"
-    networks:
-      - loki
-
-  promtail:
-    image: grafana/promtail:2.4.1
-    volumes:
-      - /var/log:/var/log
-      - /var/lib/docker:/var/lib/docker
-      - ./config:/etc/loki/config
-    restart: unless-stopped
-    command: -config.file=/etc/loki/config/promtail-simple-scalable.yaml
     networks:
       - loki
 
@@ -179,17 +168,3 @@ services:
     networks:
       - loki
 
-  # nginx:
-  #   image: nginx:latest
-  #   container_name: nginx
-  #   ports:
-  #     - 8080:80
-  #   environment:
-  #     - loki=dev
-  #   logging:
-  #     driver: loki
-  #     options:
-  #       loki-url: "http://host.docker.internal:3100/loki/api/v1/push"
-  #       loki-external-labels: job=docker,env=dev
-  #   networks:
-  #     - loki
