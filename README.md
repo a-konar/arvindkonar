@@ -2,7 +2,7 @@
 
 ## I'm a Network Engineer, Automation Lover, Content Creator and Educator!!
 
-- 🌱 I’m love learning new technologies
+- 🌱 I love learning new technologies
 - 👯 I’m looking to collaborate with other content creators
 
 ### Connect with me:
