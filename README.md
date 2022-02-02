@@ -7,7 +7,8 @@
 
 ### Connect with me:
 
-[<img align="left" alt="codeSTACKr | YouTube" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/youtube.svg" />][youtube]
+[![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/me_akonar.svg?style=social&label=Follow%20%40me_akonar)](https://twitter.com/me_akonar)
+
 
 ### 📺 Latest YouTube Videos
 
