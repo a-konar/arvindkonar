@@ -168,3 +168,14 @@ services:
     networks:
       - loki
 
+  promtail:
+    image: grafana/promtail:2.4.2
+    volumes:
+      - /var/log:/var/log
+      - ./config:/etc/loki/config
+    # For docker logs from a linux container, use below part
+      - /var/lib/docker:/var/lib/docker
+    restart: unless-stopped
+    command: -config.file=/etc/loki/config/promtail-simple-scalable.yaml
+    networks:
+      - loki

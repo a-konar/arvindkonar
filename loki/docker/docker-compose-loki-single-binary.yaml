@@ -22,7 +22,7 @@ services:
       - /var/lib/docker:/var/lib/docker
       - ./config:/etc/loki/config
     restart: unless-stopped
-    command: -config.file=/etc/loki/config/promtail.yaml
+    command: -config.file=/etc/loki/config/promtail-single-binary.yaml
     networks:
       - loki
 

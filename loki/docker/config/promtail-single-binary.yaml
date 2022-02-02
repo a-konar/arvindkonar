@@ -6,17 +6,15 @@ positions:
   filename: /tmp/positions.yaml
 
 clients:
-  - url: http://gateway:3100/loki/api/v1/push
-    tenant_id: tenant1 
+  - url: http://loki:3100/loki/api/v1/push
 
 scrape_configs:
-
-- job_name: syslog
+- job_name: system
   static_configs:
   - targets:
       - localhost
     labels:
-      job: syslog
+      job: varlogs
       __path__: /var/log/*log
 
 - job_name: docker
